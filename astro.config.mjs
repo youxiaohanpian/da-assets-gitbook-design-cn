@@ -10,6 +10,7 @@ export default defineConfig({
     starlight({
       title: 'D.A. Assets 中文文档',
       description: 'Figma to Unity 插件完整中文文档',
+      customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
           label: '入门指南',

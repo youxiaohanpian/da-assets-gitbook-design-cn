@@ -1,0 +1,40 @@
+/* ============================================
+   Starlight 文档样式调整
+   ============================================ */
+
+/* 隐藏 markdown 内容里的 H1——Starlight 顶部已经用 frontmatter title 渲染了，避免双标题 */
+article h1 {
+  display: none;
+}
+
+/* 调整正文章节标题大小，更适合阅读 */
+article h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  padding-bottom: 0.3rem;
+}
+
+article h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* 适当收紧代码块和表格的行高 */
+article pre {
+  font-size: 0.85rem;
+}
+
+article table {
+  font-size: 0.9rem;
+}
+
+/* 调整 blockquote 样式，减少视觉干扰 */
+article blockquote {
+  border-left-color: var(--sl-color-accent);
+  background: var(--sl-color-gray-6);
+  padding: 0.5rem 1rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.92rem;
+}
