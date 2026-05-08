@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://youxiaohanpian.github.io/da-assets-gitbook-cn',
+  site: 'https://youxiaohanpian.github.io',
+  base: '/da-assets-gitbook-cn',
   title: 'D.A. Assets 中文文档',
   trailingSlash: 'always',
   integrations: [
