@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { remarkBaseRewrite } from './src/plugins/remark-base-rewrite.js';
 
 export default defineConfig({
   base: '/da-assets-gitbook-design-cn',
@@ -7,6 +8,9 @@ export default defineConfig({
   // site: 'https://youxiaohanpian.github.io',
   title: 'D.A. Assets 设计师文档',
   trailingSlash: 'always',
+  markdown: {
+    remarkPlugins: [remarkBaseRewrite('/da-assets-gitbook-design-cn')],
+  },
   integrations: [
     starlight({
       title: 'D.A. Assets 设计师文档',

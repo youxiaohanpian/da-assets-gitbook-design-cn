@@ -4,11 +4,14 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node src/plugins/postbuild-rewrite-links.js",
     "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/starlight": "0.28.6",
     "astro": "4.16.19"
+  },
+  "devDependencies": {
+    "unist-util-visit": "^5.1.0"
   }
 }
