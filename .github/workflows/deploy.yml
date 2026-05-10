@@ -17,44 +17,33 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
-
+          node-version: 20
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
-
-      - name: Download assets from GitBook CDN
-        run: |
-          mkdir -p public/files
-          for id in 2dURuFOyjYIZlWLTnoeS 3uRW3wCwBHbU70Cy6e05 4UT3RznkgcHY5IV5cHIP BgEl4ciuyYVmX7MUlLzS IHSgS03k6EeAztU0R37g LCW3K4g66Hcj5u3fehV9 SoWCJ4E2SfKiJavPlBso U0y3i5QwmwfFK1O7VOxc fwtvd2K3rOweyrzSSXyC l6ELN6omciJ4eEADBDXB lOkyvNGvAyDaTC3BYPoA rr4k9k82mjW0FhuapV56 tsk3PrTCnjHXTBjmA5N6 wDTwqwwpmj2CwTvBbx34; do
-            curl -sL "https://cdn.gitbook.com/files/${id}" -o "public/files/${id}" || true
-          done
-
+        run: pnpm install --frozen-lockfile
       - name: Build
-        run: npm run build
-        env:
-          NODE_TLS_REJECT_UNAUTHORIZED: '0'
-
-      - name: Upload artifact
+        run: pnpm build
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

@@ -1,19 +1,14 @@
 {
-  "name": "da-assets-starlight",
+  "name": "da-assets-designers",
   "version": "1.0.0",
-  "description": "D.A. Assets 中文文档站",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
-  "keywords": ["da-assets", "unity", "figma", "documentation", "chinese"],
-  "author": "youxiaohanpian",
-  "license": "MIT",
   "dependencies": {
-    "@astrojs/starlight": "^0.39.1",
-    "astro": "^6.3.1"
+    "@astrojs/starlight": "0.28.6",
+    "astro": "4.16.19"
   }
 }
