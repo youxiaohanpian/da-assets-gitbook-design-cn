@@ -1,76 +1,37 @@
 ---
 title: 布局规则
-description: D.A. Assets 文档
+description: D.A. Assets 设计师文档
 ---
-
-import { Steps, Aside } from '@astrojs/starlight/components';
 
 # 布局规则
 
-<Aside type="note">
-前两点是必填的。
+> **提示：** 前两点是**强制**的。
+> 在大多数情况下，你不需要在导入前对布局做任何其他修改，就能获得正确的结果。
 
-在大多数情况下，您不需要对布局进行任何其他更改即可获得正确的结果。
-</Aside>
+1. 导入前，禁用 Frame 上的 **Clip Content**（裁剪内容）。
 
----
+2. 如果要导入 Section 内容，需要将其转换为 Frame：
+   - 右键点击 Section
+   - 在出现的上下文菜单中，选择 **"Convert to Frame"（转换为 Frame）**
 
-## 必填要求
+   ![转换为Frame](/files/BcSdEpickYandPxuISkO)
 
-<Steps>
+3. 如果你希望某个组件被导入为单个图像，但默认情况下没有发生，请参考 **[图像合并](/image-merging/)** 章节。
 
-1. 导入前禁用 frames 上的 **"Clip Content"**。
+4. 如果你希望组件内的子组件不被合并为单个图像，请参考 **[图像分割](/image-splitting/)** 章节。
 
-2. 如果您想导入 section 内容，需要将它们转换为 frames：
+5. 标签后的文本**不应**仅由**特殊字符**组成。
 
-   1. 右键点击 section。
-   2. 在出现的上下文菜单中，选择 **"Convert to Frame"**。
+   ![标签后不要只放特殊字符](/files/NsViEr9ovCMVqjB5MJFR)
 
-</Steps>
+6. 包含子文本组件或任何其他阻止父组件被合并为单个 PNG 图像的元素的**父组件规则**：
 
----
+   - 不要在父组件上放置 **Effects（效果）**和 **Image-Fill（图像填充）**
+   - 如果你使用的是 **UI.Image** 或 **SpriteRenderer**，不要在父组件上放置**渐变（Gradients）**
+   - 如果你使用的是 **SpriteRenderer**，不要给父组件添加**圆角**
+   
+   如果违反了这些条件，此类父组件的填充和效果将不会被导入。要解决此问题，请将这些填充和效果移动到单独的子组件中。
 
-## 可选优化
+7. Unity 提供了多种工具来复现 Figma 的图形能力，例如支持渐变和描边的程序化图像。请查看 **[Figma 组件与 Unity 组件兼容性表](https://www.figma.com/board/doM1KFgNleD8F4EobPkmV1/Compatibility-Table-for-Figma-Components-with-Unity-Components?node-id=0-1&t=AfvEoIcfjIHBi1eZ-0)**，以更好地了解导入后的设计效果。
 
-<Steps>
-
-1. 如果您希望某个组件作为单个图像导入，但默认情况下没有发生这种情况，请参阅 **"[图像合并](/da-assets-gitbook-cn/16-image-merging/)"** 部分。
-
-2. 如果您希望组件内的组件不被合并成单个图像，\
-   请参阅 **"[图像分割](/da-assets-gitbook-cn/21-image-splitting/)"** 部分。
-
-3. 标签后的文本**不应**仅由**特殊字符**组成。
-
-4. 关于包含子文本组件或阻止父组件合并为单个 PNG 图像的其他元素的父组件规则：
-
-   - 不要在父组件上放置 **Effects** 和 **Image-Fill**。
-   - 如果您使用的是 **UI.Image** 或 **SpriteRenderer**，不要在父组件上放置 **Gradients**。
-   - 如果您使用的是 **SpriteRenderer**，不要为父组件添加圆角。\
-     如果违反这些条件，此类父组件的填充和效果将不会被导入。\
-     要解决此问题，请将这些填充和效果移动到单独的子组件中。
-
-5. Unity 提供了各种工具来复制 Figma 的图形功能，例如支持渐变和轮廓的程序化图像。请查看 "[Figma 组件与 Unity 组件的兼容性表](https://www.figma.com/board/doM1KFgNleD8F4EobPkmV1/Compatibility-Table-for-Figma-Components-with-Unity-Components)" 以更好地了解导入的设计将如何呈现。
-
-6. 请查看 "[示例模板](https://www.figma.com/design/QRYCs4gMgj7f6KCWegNs9B)" 以了解在 Figma 中设计导入布局时需要关注的内容。
-
-</Steps>
-
----
-
-## 关键规则总结
-
-| 规则类型 | 具体要求 |
-|---------|---------|
-| **必填** | 禁用 Clip Content；将 Section 转换为 Frame |
-| **图像合并** | 使用 img 标签控制 |
-| **图像分割** | 使用 tg/tgr 标签控制 |
-| **文本限制** | 标签后文本不能只有特殊字符 |
-| **父组件** | 避免 Effects、Gradients、圆角冲突 |
-
----
-
-## 相关文档
-
-- **图像合并:** /16-image-merging/
-- **图像分割:** /21-image-splitting/
-- **命名和标签:** /19-naming-and-tags/
+8. 请查看 **[示例模板](https://www.figma.com/design/QRYCs4gMgj7f6KCWegNs9B)**，了解在 Figma 中设计布局以供导入时需要注意什么。

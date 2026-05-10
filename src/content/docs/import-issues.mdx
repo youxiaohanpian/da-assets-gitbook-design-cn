@@ -1,51 +1,35 @@
 ---
-title: Import Issues（导入问题）
-description: D.A. Assets 文档
+title: 导入问题
+description: D.A. Assets 设计师文档
 ---
 
-# Import Issues（导入问题）
+# 导入问题
 
-## 常见问题
+1. **导入后我的 Frame 看起来和 Figma 布局不一样。为什么？**  
+   答案可以在 **[布局规则](/layout-rules/)** 章节（《设计师手册》部分）中找到。
 
-本文档介绍在使用 Figma Converter for Unity 导入项目时可能遇到的常见问题。
+2. **我的组件被合并为单个图像，而我想把它们分开。**  
+   **我的组件由多个图像组成，而我想将它们合并为一个。**  
+   你会在《设计师手册》的 **"命名与标签"** 章节中找到此问题的解决方案。
 
-## 问题列表
+3. **"Either this file doesn't exist or you don't have permission to view it. Ask the file owner to verify the link and/or update permissions"**  
 
-### 问题 1：Figma 请求限制
+   如果你看到此错误，需要阅读《设计师手册》中的 **[团队协作](/teamwork/)** 章节。  
+   《设计师手册》的 **"团队协作"** 章节将**在所有图像都缺失时帮助你**。
 
-**症状**：返回 429 Too Many Requests 错误
+4. **如果你看到这些错误，你可能已达到 API 请求限制。**
 
-**原因**：Figma 对免费账户应用请求限制
+   ![API 限制错误](/files/xLKo0N9G2GIYxRtqxo0B)
 
-**解决方案**：
-- 等待冷却期（约 4 天）
-- 升级到 Figma Full Seat 订阅
-- 使用 ZIP 副本导入方式
+   **你可能已达到 Figma API 请求限制**，这将暂时阻止你导入 Frame。  
+   **为避免此问题**，请遵循以下准则：
+   - 不要一次导入**超过 100 个** Frame；
 
-### 问题 2：图像未正确导入
+   **如果你已达到限制，需要等待**一段时间才能再次导入 Frame，或者创建一个新项目。
 
-**症状**：某些图像未被正确导入
+   > **提示：** 这些不是要求，而是基于个人经验的建议。
 
-**可能原因**：
-- 父组件不符合自动合并规则
-- 某些效果不被 Unity 组件支持
+5. **`ArgumentOutOfRangeException DA_Assets.FCU.CurrentProject.TryGetByIndex (at CurrentProject.cs)`**
 
-**解决方案**：
-- 检查是否符合 "Layout Rules" 中的规则
-- 使用 "img" 标签强制合并
-- 使用 "cont" 标签强制分割
-
-### 问题 3：文本渲染不一致
-
-**症状**：Unity 中的文本显示与 Figma 不一致
-
-**解决方案**：
-- 启用 "Auto-Size" 选项
-- 调整 TextMeshPro 字体文件的边距设置
-- 使用 TextMeshPro 而非 UI.Text
-
-## 获取更多帮助
-
-如需更多帮助，请通过以下方式联系开发者：
-- Discord：https://discord.com/invite/ZsnDffV5eE
-- 邮件：da.assets.publisher@gmail.com
+   要解决此问题，你需要安装正确版本的 [Json.NET](/json-net/)。  
+   通过 Package Manager 安装 [Json.NET](/json-net/) 的信息可以在本手册开头找到。

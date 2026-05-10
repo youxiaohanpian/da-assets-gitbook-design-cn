@@ -1,0 +1,26 @@
+---
+title: 输入字段
+description: D.A. Assets 设计师文档
+---
+
+# 输入字段
+
+> **提示：** `fld` - 用户名 / `pwd` - 密码
+> 示例：[链接](https://www.figma.com/design/QRYCs4gMgj7f6KCWegNs9B/Figma-Converter-for-Unity---Example-templates?node-id=2610-201&t=3jqmt8FC6jMll7Bn-4)
+
+1. 要让资产在 Unity 中自动添加 **InputField** 脚本，你需要在 Figma 的组件名称中包含标签 **`fld`**。  
+   你也可以使用 **`pwd`** 标签来创建[密码输入字段](https://www.figma.com/design/QRYCs4gMgj7f6KCWegNs9B/Figma-Converter-for-Unity---Example-templates?node-id=2610-201&t=3jqmt8FC6jMll7Bn-4)。
+
+2. 对于占位符（Placeholder），你应该使用标签 **`ph`**。
+
+3. 如果你的 InputField 包含多个图像（例如背景和边框），请对背景使用标签 **`bg`**。
+
+4. InputField 内的其他组件不需要标签。
+
+5. 在 Unity 中，**InputField** 有两个脚本：一个支持 **TextMeshPro**，另一个支持 **UI.Text**。  
+   下方你可以看到这两个脚本的层级结构示例。  
+   包含 InputField 示例的 Frame 链接：[链接](https://www.figma.com/design/QRYCs4gMgj7f6KCWegNs9B/Figma-Converter-for-Unity---Example-templates?node-id=2610-201&t=3jqmt8FC6jMll7Bn-4)
+
+   ![InputField 层级结构](/files/K5H4Y1FuIWE4q1utNKKm)
+
+6. 你可以切换 **fld** 或 **TextArea** 内文本组件的**可见性**，但在 Unity 中，InputField 内的所有文本组件**都将可见**。

@@ -1,29 +1,22 @@
 ---
-title: Image Merging（图像合并）
-description: D.A. Assets 文档
+title: 图像合并
+description: D.A. Assets 设计师文档
 ---
 
-# Image Merging（图像合并）
+# 图像合并
 
-## 功能说明
+如果你希望将父对象和子对象合并为单个组件，请在父元素名称上应用 **`img`** 标签。
 
-如果您想要将父对象和子对象合并到单个组件中，请对父元素名称应用 "**img**" 标签。
+**不带 img 标签时：**
 
-## 对比示例
+![不带img标签](/files/sktdbmBQX9G89k8mntGy)
 
-### 没有 img 标签的情况：
-包含一张图片 (width="239")
+**带 img 标签时：**
 
-### 有 img 标签的情况：
-包含一张图片 (width="88")
+![带img标签](/files/uJioyg5SILxrTm6unqAa)
 
-## 示例
+> **提示：** 带标签的组件名称示例：`img - char - mario - lg-run`
 
-**带标签的组件名称示例：**
-```
-img - char - mario - lg-run
-```
+![组件名称示例](/files/pJbCT5kMlrggWoTik4u1)
 
-## 自动导入规则
-
-如果父组件的所有子组件都是矢量图，父组件将**自动**作为单个图像导入。
+> **提示：** 如果父组件的所有子组件都是矢量，父组件将自动作为单个图像导入。

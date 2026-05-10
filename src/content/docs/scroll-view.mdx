@@ -1,0 +1,33 @@
+---
+title: 滚动视图
+description: D.A. Assets 设计师文档
+---
+
+# 滚动视图
+
+> **提示：** `scroll` - 我的滚动视图
+> 示例：[链接](https://www.figma.com/design/QRYCs4gMgj7f6KCWegNs9B/Figma-Converter-for-Unity---Example-templates?node-id=2642-271&t=jOea4ZQ3iSfid4yb-4)
+
+![滚动视图结构](/files/0AwHRJ6GVDhptDTTg093)
+
+1. 要让资产在 Unity 场景中自动添加 **ScrollView**，你的 ScrollView 层级必须与截图中所示一致。
+
+2. 带有 **`scroll`** 标签的组件是父组件，导入期间会向其添加 **"ScrollRect"** 脚本。  
+   对其**禁用** **"Clip Content"（裁剪内容）** 选项。
+
+3. 在 Viewport 上，你需要配置滚动原型，可以设置 **Overflow（溢出）** 属性。  
+   支持的 **Overflow** 选项：
+   - 水平
+   - 垂直
+   - 双向
+   
+   目前不支持 **Position（位置）** 属性配置。
+
+   Viewport 的大小应与带有 `scroll` 标签的父组件相同。  
+   对其**禁用** **"Clip Content"** 选项。导入期间，**RectMask2D** 组件将自动添加到 Viewport（类似于 Figma 的 Clip Content）。
+
+4. 你要滚动的内容应放置在 **Content** 对象内。  
+   对其**禁用** **"Clip Content"** 选项。  
+   Content 必须始终大于 Viewport。
+
+5. 无论你为这些组件设置了什么 **Constraints（约束）**，Figma Converter 都会在导入期间自动设置正确的 **Constraints**。
