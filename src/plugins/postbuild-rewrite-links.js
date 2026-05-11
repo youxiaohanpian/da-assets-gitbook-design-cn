@@ -13,13 +13,26 @@ const base = '/da-assets-gitbook-design-cn';
 
 function rewriteHtmlFile(filePath) {
   let content = readFileSync(filePath, 'utf-8');
+  let changed = false;
+
   // Replace href="/..."  with href="/base/..." (but not already-prefixed, and not external)
-  const rewritten = content.replace(
+  const hrefRewritten = content.replace(
     /href="(\/)(?![^"]*da-assets-gitbook-design-cn)([^"]*)"/g,
     `href="${base}/$2"`
   );
-  if (content !== rewritten) {
-    writeFileSync(filePath, rewritten, 'utf-8');
+  if (content !== hrefRewritten) changed = true;
+  content = hrefRewritten;
+
+  // Replace src="/files/..." with src="/base/files/..." (but not already-prefixed)
+  const srcRewritten = content.replace(
+    /src="(\/)(files\/)(?![^"]*da-assets-gitbook-design-cn)([^"]*)"/g,
+    `src="${base}/files/$3"`
+  );
+  if (content !== srcRewritten) changed = true;
+  content = srcRewritten;
+
+  if (changed) {
+    writeFileSync(filePath, content, 'utf-8');
     console.log(`Rewrote links in: ${filePath.replace(distDir, '')}`);
   }
 }
